@@ -37,7 +37,27 @@ nav {
     display: flex;
     justify-content: flex-end;
 }
-
+nav input {
+    height: 30px;
+    padding: 5px;
+    margin: 0;
+    box-sizing: border-box;
+    flex: 0 1 auto;
+}
+nav input {
+    height: 30px;
+    padding: 5px;
+    margin: 0;
+    box-sizing: border-box;
+    flex: 0 1 auto;
+}
+nav input {
+    height: 30px;
+    padding: 5px;
+    margin: 0;
+    box-sizing: border-box;
+    flex: 0 1 auto;
+}
 .nav-list{
    display: flex;
 }
