@@ -8,80 +8,84 @@
 }
 :root {
     --myFont: 'Roboto', sans-serif;
-    --primaryColor: rgb(135, 206, 235), skyblue;
-    --secondaryColor: rgb(255, 0, 255), magenta;
-    --myFontSizeBase: 1em;
+    --primary-clr: rgb(135, 206, 235), skyblue;
+    --secondary-clr: rgb(255, 0, 255), magenta;
+    --my-font: 1em;
 }
 body {
     display: grid;
     grid-template-areas: 
-        'header header header header'
-        '. aside main .'
-        'footer footer footer footer';
+            "header header" 
+            "sidebar main"
+            "footer footer";
     grid-template-rows: auto 1fr auto;
-    grid-template-columns: auto 1fr 2fr;
+    grid-template-columns: 350px 1fr;
+    height: 100vh;        
 }
-header,
-footer {
+header {
     grid-area: header;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
 }
-header > .head-con {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-nav {
-    display: flex;
-    justify-content: flex-end;
-}
-nav input {
-    height: 30px;
-    padding: 5px;
-    margin: 0;
-    box-sizing: border-box;
-    flex: 0 1 auto;
-}
-nav input {
-    height: 30px;
-    padding: 5px;
-    margin: 0;
-    box-sizing: border-box;
-    flex: 0 1 auto;
-}
-nav input {
-    height: 30px;
-    padding: 5px;
-    margin: 0;
-    box-sizing: border-box;
-    flex: 0 1 auto;
-}
-.nav-list{
-   display: flex;
-}
-.logo {
+.head-con > .logo {
     height: 10vh;
-    max-height: 70px;
+    max-height: 50px;
     width: auto;
     max-width: 100%;
-    margin-right: auto;
 }
 aside {
-    grid-area: aside;
+    grid-area: sidebar;
 }
 main {
-    grid-area: main;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: repeat(4, auto);
+    gap: 15px;
+    padding: 10px;
+}
+
+.products-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.grid-con {
+    display: grid;
+    grid-template-areas: "low-stock" "review";
+    grid-template-rows: auto;
     gap: 10px;
 }
-main img {
-    width: 100%;
+.low-stock {
+    grid-area: low-stock;
+    grid-row: 2 / 3;
+}
+.review {
+    grid-area: review;
+    grid-row: 3 / 4;
+}
+.low > img {
     height: auto;
+    max-height: 50px;
+    width: 100%;
+    max-width: 50px;
+    object-fit: cover;  
+}
+.cards > img {
+    height: auto;
+    max-height: 200px;
+    width: 100%;
+    max-width: 250px;
     object-fit: cover;
 }
+
 footer {
     grid-area: footer;
+}
+nav input {
+    height: 30px;
+    padding: 5px;
+    margin: 0;
+    margin-right: 50%;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-size: 14px;
+    flex: 0 1 auto;
 }
