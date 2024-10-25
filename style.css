@@ -8,7 +8,7 @@
 }
 :root {
     --myFont: 'Roboto', sans-serif;
-    --primary-clr: rgb(135, 206, 235), skyblue;
+    --primary-clr: rgb(135, 206, 235);
     --secondary-clr: rgb(255, 0, 255), magenta;
     --my-font: 1em;
 }
@@ -24,12 +24,36 @@ body {
 }
 header {
     grid-area: header;
+    display: grid;
+    grid-template-columns: auto;
+    padding: 15px; 
+    margin: 0;
+    border: 1px solid black;
+    background-color: var(--primary-clr);
+}
+header > .head-con {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 5px;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+header > nav,
+.nav-list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    list-style: none;
 }
 .head-con > .logo {
     height: 10vh;
     max-height: 50px;
     width: auto;
     max-width: 100%;
+    margin-right: auto;
 }
 aside {
     grid-area: sidebar;
