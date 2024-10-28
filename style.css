@@ -13,7 +13,7 @@
     --myFont: 'Roboto', sans-serif;
     --primary-clr: rgb(0, 0, 0);
     --secondary-clr: rgb(196, 170, 27) ;
-    --my-font: 1em;
+    --my-font: 1rem;
     --main-clr: rgba(204, 204, 194, 0.7);
 }
 body {
@@ -146,23 +146,23 @@ aside {
 }
 .sidebar-items #dashboard {
     color: rgb(255, 255, 255);
-    font-size: 2em;
+    font-size: 2rem;
 }
 .sidebar-items  #profile {
     color: rgb(255, 215, 0);
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 .sidebar-items #wishlist {
     color: rgb(233, 42, 42);
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 .sidebar-items #message {
     color: rgb(55, 211, 55);
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 .sidebar-items #settings {
     color: rgb(82, 77, 77);
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 .sidebar-items .tittle {
     font-family: var(--myFont);
@@ -251,7 +251,7 @@ main {
     flex-wrap: wrap;
 }
 .low-stock h2 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-family: var(--myFont);
     color: rgb(207, 22, 22);
     text-align: center;
@@ -287,9 +287,9 @@ main {
     justify-content: space-between;
 }
 .review h2 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-family: var(--myFont);
-    color: rgb(29, 194, 8);
+    color: rgb(10, 10, 10);
     margin-bottom: 5px;
 }
 .review > .each-review {
@@ -298,7 +298,7 @@ main {
     border-radius: 0 10px 10px 0;
 }
 .each-review h3{
-   font-size: 1em;
+   font-size: var(--my-font);
    font-family: var(--myFont);
    color: rgb(0, 0, 0);
    margin-bottom: 5px;
@@ -331,10 +331,10 @@ footer {
     background-color: var(--primary-clr);
 }
 footer h2 {
-font-size: 20px;
-font-family: var(--myFont);
-color: rgb(255, 255, 255);
-margin-bottom: 5px;
+    font-size: 20px;
+    font-family: var(--myFont);
+    color: rgb(255, 255, 255);
+    margin-bottom: 5px;
 }
 .footer-content > #email {
     color: rgb(207, 22, 22);
@@ -359,12 +359,26 @@ margin-bottom: 5px;
     font-family: var(--myFont);
     text-align: center;
 }
+.close-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #000;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    cursor: pointer;
+    z-index: 11;
+}
 @media (max-width: 850px) {
     body {
         grid-template-columns: 1fr;
     }
+    aside {
+        top: 242px;
+    }
     .sidebar-items .tittle  {
-        font-size: 10px;
+        display: none;
     }
     main {
         grid-template-columns: 1fr;
