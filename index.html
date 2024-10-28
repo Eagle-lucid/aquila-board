@@ -11,18 +11,18 @@
    <header>
    <div class="head-con">
     <img class="logo" src="images/295047-ac9c0c.svg" alt="Eagle logo">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="gold" viewBox="0 0 24 24" aria-label="Notification">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="gold" viewBox="0 0 24 24" aria-label="Notification">
         <title>Notification Icon</title>
         <path d="M12 2a7 7 0 00-7 7v5H3v2h18v-2h-2V9a7 7 0 00-7-7zm0 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
     </svg>
         <a class="icon" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" viewBox="0 0 24 24" aria-label="Account">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 24 24" aria-label="Account">
                 <title>Account</title>
                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-10 1.67-10 5v2h20v-2c0-3.33-6.69-5-10-5z"/>
             </svg>
             Login/Sign Up         
         </a>
-    <svg class="icon`" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="green" viewBox="0 0 24 24" aria-label="Cart variant">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="green" viewBox="0 0 24 24" aria-label="Cart variant">
         <title>cart-variant</title>
         <path d="M19 20C19 21.11 18.11 22 17 22C15.89 22 15 21.1 15 20C15 18.89 15.89 18 17 
         18C18.11 18 19 18.9 19 20M7 18C5.89 18 5 18.89 5 20C5 21.1 5.89 22 7 22C8.11 22 9 21.11 
@@ -33,39 +33,41 @@
     </svg>
    </div>
    <nav >
-    <label for="search">
-        <span class="mdi mdi-magnify" aria-label="Search"></span>
-    </label>
-    <input type="search" name="search" id="search" placeholder="Search for item" required>
+    <div class="search-con">
+        <label for="search">
+            <span class="mdi mdi-magnify" aria-label="Search"></span>
+        </label>
+        <input type="search" name="search" id="search" placeholder="Search for item" required>
+    </div>
     <ul class="nav-list">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Orders</a></li>
-        <li><a href="#">Customers</a></li>
+        <li><a href="#" aria-label="Navigate to Home">Home</a></li>
+        <li><a href="#" aria-label="Navigate to Products">Products</a></li>
+        <li><a href="#" aria-label="Navigate to Orders">Orders</a></li>
+        <li><a href="#" aria-label="Navigate to Customers">Customers</a></li>
     </ul>
    </nav>
    </header>
    <div>
     <aside class="sidebar">
         <div class="sidebar-items">
-            <span class="mdi mdi-view-dashboard" aria-label="Dashboard"></span>
-            <span class="dashboard">Dashboard</span>
+            <span id="dashboard" class="mdi mdi-view-dashboard" aria-label="Dashboard"></span>
+            <span class="tittle">Dashboard</span>
         </div>
         <div class="sidebar-items">
-            <span class="mdi mdi-account" aria-label="Profile"></span>
-            <span class="profile">Profile</span>
+            <span id="profile" class="mdi mdi-account" aria-label="Profile"></span>
+            <span class="tittle">Profile</span>
         </div>
         <div class="sidebar-items">
-            <span class="mdi mdi-heart" aria-label="Wishlist"></span>
-            <span class="favorite">Wishlist</span>
+            <span id="wishlist" class="mdi mdi-heart" aria-label="Wishlist"></span>
+            <span class="tittle">Wishlist</span>
         </div>
         <div class="sidebar-items">
-            <span class="mdi mdi-message-outline" aria-label="Message"></span>
-            <span class="meassage">Messages</span>
+            <span id="message" class="mdi mdi-message-outline" aria-label="Message"></span>
+            <span class="tittle">Messages</span>
         </div>
         <div class="sidebar-items">
-            <span class="mdi mdi-cog" aria-label="Settings"></span>
-            <span class="settings">Settings</span>
+            <span id="settings" class="mdi mdi-cog" aria-label="Settings"></span>
+            <span class="tittle">Settings</span>
         </div>
     </aside>
    </div>
@@ -151,7 +153,7 @@
         <div class="low-stock">
             <h2>Low Stocks</h2>
             <div class="low">
-                <img src="images/Backpack.jpg" alt="Backpack">
+                <img src="images/backpack1.jpg" alt="Backpack">
                 <span>Backpack</span>
             </div>
             <div class="low">
@@ -165,32 +167,32 @@
         </div>
         <div class="review">
             <h2>Customers Review</h2>
-            <div class="eachreview">
+            <div class="each-review">
                 <h3>David</h3>
                 <p>The classic leather shoes I purchased exceeded my expectations.
                     They are not only stylish but also incredibly comfortable. 
                     I wore them for an entire day and had no issues!
                 </p>
             </div>
-            <div class="eachreview">
+            <div class="each-review">
                 <h3>Peace</h3>
                 <p>I love my new hoodie! The fabric is soft, and it keeps me warm
                    without being too heavy. I get compliments every time I wear it!
                 </p>
             </div>
-            <div class="eachreview">
+            <div class="each-review">
                 <h3>Micheal</h3>
                 <p>The silky pants are fantastic! They fit perfectly and are great 
                    for both casual outings and work. Definitely a wardrobe staple!
                 </p>
             </div>
-            <div class="eachreview">
+            <div class="each-review">
                 <h3>Brianna</h3>
                 <p>I was impressed by the quality of the round neck polo. It's breathable 
                    and has held up well after several washes. Highly recommend!
                 </p>
             </div>
-            <div class="eachreview">
+            <div class="each-review">
                 <h3>Chris</h3>
                 <p>These sneakers are the best! They provide great support for my feet, 
                    and I can wear them for hours without discomfort. Plus, they look awesome!
@@ -203,8 +205,10 @@
     <footer>
         <div class="footer-content">
             <h2>Contact Us</h2>
-            <span id="email" class="mdi mdi-email-outline"><a href="mailto:vicokefie@gmail.com">Vicokefie@gmail.com</a></span>
-            <span id="github" class="mdi mdi-github"><a href="https://github.com/Eagle-lucid">GitHub Profile</a></span>
+            <span id="email" class="mdi mdi-email-outline"></span>
+            <span><a href="mailto:vicokefie@gmail.com">Vicokefie@gmail.com</a></span>
+            <span id="github" class="mdi mdi-github"></span>
+            <span><a href="https://github.com/Eagle-lucid">GitHub Profile</a></span>
             <p></p>
         </div>
         <div class="footer-links">
@@ -218,5 +222,7 @@
             <p>&copy; 2024 Lucid Store. All Rights Reserved.</p>
         </div>
     </footer>
+    <script>
+    </script>
 </body>
 </html>
