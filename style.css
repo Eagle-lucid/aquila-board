@@ -359,17 +359,6 @@ footer h2 {
     font-family: var(--myFont);
     text-align: center;
 }
-.close-btn {
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: #000;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    cursor: pointer;
-    z-index: 11;
-}
 @media (max-width: 850px) {
     body {
         grid-template-columns: 1fr;
