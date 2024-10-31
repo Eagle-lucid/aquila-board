@@ -1,2 +1,2 @@
 # admin-dashboard
-# this projects really helped me getting a tight grip on grid and i love it
+# this project really help me get a tight grip on grid and i love it
