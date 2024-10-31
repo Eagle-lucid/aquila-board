@@ -390,7 +390,7 @@ footer h2 {
     }
     main {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(8, auto);
+        grid-template-rows: repeat(8, auto-fit);
     }
     .products-cards {
         grid-template-columns: repeat(2, 1fr);
