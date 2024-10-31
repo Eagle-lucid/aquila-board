@@ -14,7 +14,7 @@
     --primary-clr: rgb(0, 0, 0);
     --secondary-clr: rgb(196, 170, 27) ;
     --my-font: 1rem;
-    --main-clr: rgba(204, 204, 194, 0.7);
+    --main-clr: rgba(138, 138, 132, 0.7);
 }
 body {
     display: grid;
@@ -185,7 +185,7 @@ main {
 }
 .products-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
 }
 .products-cards > .cards{
@@ -212,6 +212,11 @@ main {
     font-family: var(--myFont);
     color: rgb(12, 12, 12);
     padding: 5px;
+}
+.cards > .amt {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(218, 165, 32);
 }
 .cards > button[type="button"] {
     padding: 7px;
@@ -325,7 +330,7 @@ main {
 footer {
     grid-area: footer;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto-fit;
     gap: 1rem;
     padding: 10px;
     background-color: var(--primary-clr);
@@ -363,8 +368,21 @@ footer h2 {
     body {
         grid-template-columns: 1fr;
     }
+    header > .head-con {
+        gap: 10px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+    }
+    header > nav, 
+    .nav-list {
+        gap: 0;
+        margin-top: 5px;
+    }
     aside {
-        top: 242px;
+        top: 0;
+        height: 100vh;
+        display: grid;
+        grid-template-rows: repeat(5, 1fr);
     }
     .sidebar-items .tittle  {
         display: none;
@@ -386,10 +404,13 @@ footer h2 {
         grid-template-areas: 
         "footer-content footer-links"
         "footer-bottom footer-bottom";
-        grid-template-columns: 3fr 2fr;
+        grid-template-columns: repeat(2, auto);
     }
     .footer-content {
         grid-area: footer-content;
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        margin-left: 10px;
     }
     .footer-links {
         grid-area: footer-links;
