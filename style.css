@@ -95,6 +95,7 @@ nav > .search-con {
     width: 100%;
     border: none;
     border-radius: 10px;
+    padding-right: 5px;
 }
 .search-con label {
     position: absolute;
