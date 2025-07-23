@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aquilaboard - Luxury Fashion Dashboard">
+    <meta name="keywords" content="dashboard, admin, luxury fashion, ecommerce, analytics">
+    <meta name="author" content="Golden Eagle Team">
+    <title>Aquilaboard | Golden Eagle Dashboard</title>
+    <link rel="icon" href="src/assets/images/logo/favicon.ico" type="image/x-icon">
+    <!-- Preload key assets -->
+    <link rel="preload" href="src/assets/images/dashboard/fashion-grahic.svg" as="image">
+    <link rel="preload" href="src/assets/images/logo/aquilaboard-logo.svg" as="image">
+</head>
+<body class="dashboard">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header" id="sidebarHeader">
+            <div class="brand-logo">
+                <img src="src/assets/images/logo/aquilaboard-logo.svg" alt="Aquilaboard Logo" width="40">
+                <span>Aquilaboard</span>
+            </div>
+            <button 
+             class="sidebar-toggle" 
+             id="sidebarToggle" 
+             aria-label="Toggle sidebar" 
+             aria-expanded="true" 
+             aria-controls="sidebarNav" 
+             type="button">
+             <i class="bi bi-chevron-double-left" aria-hidden="true"></i>
+           </button>
+
+        </div>
+
+        <nav class="sidebar-nav" id="sidebarNav">
+            <ul>
+                <li class="active">
+                    <a href="#">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-collection"></i>
+                        <span>Collections</span>
+                        <span class="badge bg-gold">9</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-cart"></i>
+                        <span>Orders</span>
+                        <span class="badge bg-gold">24</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-people"></i>
+                        <span>Customers</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-graph-up"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="eagle-badge">
+                    <i class="bi bi-award-fill"></i>
+                    <span>Golden Strategist</span>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="bi bi-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Top Nav Bar -->
+        <header class="topbar">
+            <div class="search-filter__group">
+                <div class="search-bar">
+                    <i class="bi bi-search"></i>
+                    <label for="globalSearch" class="visually-hidden">Search products</label>
+                    <input type="text" name="globalSearch" id="globalSearch" placeholder="Search products...">
+                </div>
+                <div class="filter-controls">
+                    <div class="form-group">
+                        <label for="categoryFilter">Filter by Category</label>
+                        <select name="category" id="categoryFilter">
+                            <option value="">All Categories</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="denims-jeans">Denims/Jeans</option>
+                            <option value="hoodies">Hoodies</option>
+                            <option value="silk-pants">Silk Pants</option>
+                            <option value="polo-shirts">Polo Shirts</option>
+                            <option value="jackets">Jackets</option>
+                            <option value="sneakers">Sneakers</option>
+                            <option value="leather-shoes">Leather Shoes</option>
+                            <option value="vintage-shirts">Vintage Shirts</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sortBy">Sort By</label>
+                        <select class="form-select" id="sortBy">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="popular">Most Popular</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-actions">
+                <button class="notification-btn" id="notificationBTN" aria-label="Notifications (3 unread)">
+                    <i class="bi bi-bell"></i>
+                    <span class="visually-hidden">Notifications:</span>
+                    <span>3</span>
+                </button>
+                <div class="user-profile dropdown">
+                    <button class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="src/assets/images/dashboard/admin.jpg" alt="Admin" class="avatar">
+                        <span>Admin</span>
+                        <i class="bi bi-chevron-double-down"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu__end">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="container-fluid">
+            <!-- Hero Section -->
+            <section class="dashboard-hero d-flex justify-content-between align-items-center flex-wrap">
+                <div class="hero-content" data-gsap="fadeInRight">
+                    <h1>Welcome back, <span class="text-gold">Admin</span></h1>
+                    <p class="lead">Your fashion empire awaits. Let's soar to new heights today.</p>
+                    <div class="hero-stats d-flex gap-4 flex-wrap">
+                        <div class="stat-item">
+                            <span>Today's Date</span>
+                            <strong id="currentDate">Loading...</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Daily Tip</span>
+                            <strong>Refresh inventory for spring collection</strong>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="hero-graphic position-relative" data-gsap="fadeInLeft">
+                    <img src="src/assets/images/dashboard/fashion-grahic.svg" alt="Fashion Illustration" class="img-fluid" loading="lazy">
+                    <div class="hero-badge d-flex align-items-center gap-2 position-absolute top-0 end-0 p-2 bg-dark text-gold rounded">
+                        <i class="bi bi-star-fill"></i>
+                        <span>Top 10% Luxury Fashion</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Golden Metrics Section -->
+            <section class="golden-metrics mt-5">
+                <div class="row g-4">
+                    <!-- Revenue -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="metric-card" data-gsap="fadeInUp" data-delay="0.1">
+                            <div class="metric-icon bg-primary">
+                                <i class="bi bi-currency-dollar"></i>
+                            </div>
+                            <div class="metric-info">
+                                <h3 class="metric-value" id="revenue-counter">£2.4M</h3>
+                                <p class="metric-label">Today's Revenue</p>
+                                <span class="badge bg-success">+12%</span>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Orders -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="metric-card" data-gsap="fadeInUp" data-delay="0.2">
+                            <div class="metric-icon bg-success">
+                                <i class="bi bi-cart"></i>
+                            </div>
+                            <div class="metric-info">
+                                <h3 class="metric-value" id="orders-counter">340</h3>
+                                <p class="metric-label">Total Orders</p>
+                                <span class="badge bg-success">+8%</span>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Inventory Alert -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="metric-card" data-gsap="fadeInUp" data-delay="0.3">
+                            <div class="metric-icon bg-warning">
+                                <i class="bi bi-exclamation-triangle"></i>
+                            </div>
+                            <div class="metric-info">
+                                <h3 class="metric-value" id="inventory-counter">128</h3>
+                                <p class="metric-label">Low Stock Items</p>
+                                <span class="badge bg-danger">Attention</span>
+                                <div class="metric-trend">
+                                    <i class="bi bi-box-arrow-up-short text-danger"></i>
+                                    <span class="text-danger">Restock needed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- VIP Customers -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="metric-card glass-card" data-gsap="fadeInUp" data-delay="0.4">
+                            <div class="metric-icon bg-info">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <div class="metric-info">
+                                <h3 class="metric-value" id="customersCounter">1,398</h3>
+                                <p class="metric-label">VIP Customers</p>
+                                <div class="metric-trend">
+                                    <i class="bi bi-box-arrow-up-short text-success"></i>
+                                    <span class="text-success">25 new today</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category Grid -->
+            <section class="category-grid">
+                <header class="section-header">
+                    <h2><i class="bi bi-tags"></i> Collections</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-gold">
+                            <i class="bi bi-plus-lg"></i>
+                            <span>Add Category</span>
+                        </button>
+                    </div>
+                </header>
+
+                <div class="row g-4">
+                    <!-- Accessories Category -->
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="category-card" data-category="accessories" data-gsap="fadeIn" data-delay="0.1">
+                            <div class="category-preview">
+                                <img src="src/assets/images/categories/accessories.jpg" alt="Accessories" loading="lazy">
+                                <div class="category-overlay">
+                                    <h3>Accessories</h3>
+                                    <span class="badge bg-gold">6 items</span>
+                                </div>
+                            </div>
+                            <div class="category-meta">
+                                <p>From $29.99</p>
+                                <button class="btn btn-outline-gold">Explore</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Denims/Jeans Category -->
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="category-card" data-category="denims-jeans" data-gsap="fadeIn" data-delay="0.2">
+                            <div class="category-preview">
+                                <img src="src/assets/images/categories/jeans.jpg" alt="Denims & Jeans" loading="lazy">
+                                <div class="category-overlay">
+                                    <h3>Denims/Jeans</h3>
+                                    <span class="badge bg-gold">5 items</span>
+                                </div>
+                            </div>
+                            <div class="category-meta">
+                                <p>From $49.99</p>
+                                <button class="btn btn-outline-gold">Explore</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hoodies Category -->
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="category-card" data-category="hoodies" data-gsap="fadeIn" data-delay="0.3">
+                            <div class="category-preview">
+                                <img src="src/assets/images/categories/hoodie.jpg" alt="Hoodies" loading="lazy">
+                                <div class="category-overlay">
+                                    <h3>Hoodies</h3>
+                                    <span class="badge bg-gold">4 items</span>
+                                </div>
+                            </div>
+                            <div class="category-meta">
+                                <p>From $39.99</p>
+                                <button class="btn btn-outline-gold">Explore</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pants Category -->
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="category-card" data-category="silk-pants" data-gsap="fadeIn" data-delay="0.4">
+                            <div class="category-preview">
+                                <img src="src/assets/images/categories/pants.jpg" alt="Silk Pants" loading="lazy">
+                                <div class="category-overlay">
+                                    <h3>Silk Pants</h3>
+                                    <span class="badge bg-gold">4 items</span>
+                                </div>
+                            </div>
+                            <div class="category-meta">
+                                <p>From $59.99</p>
+                                <button class="btn btn-outline-gold">Explore</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leather Shoes Category -->
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="category-card" data-category="leather-shoes" data-gsap="fadeIn" data-delay="0.1">
+                            <div class="category-preview">
+                                <img src="src/assets/images/categories/leather-shoe.jpg" alt="Leather Shoe" loading="lazy">
+                                <div class="category-overlay">
+                                    <h3>Leather Shoes</h3>
+                                    <span class="badge bg-gold">5 items</span>
+                                </div>
+                            </div>
+                            <div class="category-meta">
+                                <p>From $100</p>
+                                <button class="btn btn-outline-gold">Explore</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vintage Shirt -->
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="category-card" data-category="vintage-shirts" data-gsap="fadeIn" data-delay="0.2">
+                            <div class="category-preview">
+                                <img src="src/assets/images/categories/vintage.jpg" alt="Vintage Shirt" loading="lazy">
+                                <div class="category-overlay">
+                                    <h3>Vintage Shirt</h3>
+                                    <span class="badge bg-gold">4 items</span>
+                                </div>
+                            </div>
+                            <div class="category-meta">
+                                <p>From $79.99</p>
+                                <button class="btn btn-outline-gold">Explore</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sneakers Category -->
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="category-card" data-category="sneakers" data-gsap="fadeIn" data-delay="0.3">
+                            <div class="category-preview">
+                                <img src="src/assets/images/categories/sneakers.jpg" alt="Sneakers" loading="lazy">
+                                <div class="category-overlay">
+                                    <h3>Sneakers</h3>
+                                    <span class="badge bg-gold">6 items</span>
+                                </div>
+                            </div>
+                            <div class="category-meta">
+                                <p>From $259.99</p>
+                                <button class="btn btn-outline-gold">Explore</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Polo Shirt Category -->
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="category-card" data-category="polo-shirts" data-gsap="fadeIn" data-delay="0.4">
+                            <div class="category-preview">
+                                <img src="src/assets/images/categories/polo.jpg" alt="Polo Shirts" loading="lazy">
+                                <div class="category-overlay">
+                                    <h3>Polo Shirts</h3>
+                                    <span class="badge bg-gold">5 items</span>
+                                </div>
+                            </div>
+                            <div class="category-meta">
+                                <p>From $29.99</p>
+                                <button class="btn btn-outline-gold">Explore</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jackets Category -->
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="category-card" data-category="jackets" data-gsap="fadeIn" data-delay="0.1">
+                            <div class="category-preview">
+                                <img src="src/assets/images/categories/jackets.jpg" alt="Jackets" loading="lazy">
+                                <div class="category-overlay">
+                                    <h3>Jackets</h3>
+                                    <span class="badge bg-gold">5 items</span>
+                                </div>
+                            </div>
+                            <div class="category-meta">
+                                <p>From $287.99</p>
+                                <button class="btn btn-outline-gold">Explore</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Modal -->
+                <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="modalCategoryTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content">
+                            <header class="modal-header border-bottom">
+                                <h4 class="modal-title text-gold" id="modalCategoryTitle">Category</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </header>
+                            <div class="modal-body">
+                                <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner"></div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-footer border-top">
+                                <button class="btn btn-outline-gold" data-bs-dismiss="modal">Back to Categories</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Charts Overview Section -->
+            <section class="section charts-overview py-4">
+                <div class="container-fluid">
+                    <div class="row g-4">
+                        <!-- Sales Performance Chart -->
+                        <div class="col-md-6">
+                            <div class="card chart-card shadow-sm border-0 h-100">
+                                <header class="card-header d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+                                    <h5 class="mb-0 fw-semibold text-primary">Sales Performance</h5>
+                                    <label for="salesTimeRange" class="visually-hidden">Select time range</label>
+                                    <select id="salesTimeRange" class="form-select form-select-sm w-auto">
+                                        <option>Last 7 Days</option>
+                                        <option>Last 30 Days</option>
+                                        <option>Last Quarter</option>
+                                    </select>
+                                </header>
+                                <div class="card-body">
+                                    <div class="chart-container position-relative">
+                                        <canvas id="salesChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Revenue by Category Chart -->
+                        <div class="col-md-6">
+                            <div class="card chart-card shadow-sm border-0 h-100">
+                                <header class="card-header d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+                                    <h5 class="mb-0 fw-semibold text-primary">Revenue by Category</h5>
+                                    <label for="revenueTimeRange" class="visually-hidden">Select time range</label>
+                                    <select id="revenueTimeRange" class="form-select form-select-sm w-auto">
+                                        <option>This Month</option>
+                                        <option>Last Month</option>
+                                        <option>Quarterly</option>
+                                    </select>
+                                </header>
+                                <div class="card-body">
+                                    <div class="chart-container position-relative">
+                                        <canvas id="revenueChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- UK Market Insights -->
+            <section class="market-insights">
+                <header class="section-header">
+                    <h2><i class="bi bi-graph-up-arrow"></i> UK Market Insights</h2>
+                    <div class="time-filter">
+                        <button class="btn btn-sm btn-outline-gold active">Today</button>
+                        <button class="btn btn-sm btn-outline-gold">Week</button>
+                        <button class="btn btn-sm btn-outline-gold">Month</button>
+                    </div>
+                </header>
+                
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="card sales-chart shadow-sm border-0">
+                            <header class="card-header">
+                                <h3 class="mb-0">Regional Sales Performance</h3>
+                                <label for="regionSelect" class="visually-hidden">Choose Region</label>
+                                <select id="regionSelect" class="form-select form-select-sm w-auto">
+                                    <option>London</option>
+                                    <option>Manchester</option>
+                                    <option>Birmingham</option>
+                                    <option>Glasgow</option>
+                                    <option>All Regions</option>
+                                </select>
+                            </header>
+                            <div class="card-body">
+                                <canvas id="regionalSalesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="card top-products shadow-sm border-0">
+                            <header class="card-header">
+                                <h3>Top Products in UK</h3>
+                            </header>
+                            <div class="card-body">
+                                <div class="product-rank">
+                                    <div class="rank">1</div>
+                                    <img src="src/assets/images/products/ranks/wool-coat.jpg" alt="Wool Coat" loading="lazy">
+                                    <div class="product-info">
+                                        <h4>Wool Blend Coat</h4>
+                                        <div class="sales-info">
+                                            <span class="text-gold">£85</span>
+                                            <small>120 sold</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-rank">
+                                    <div class="rank">2</div>
+                                    <img src="src/assets/images/products/ranks/leather-boot.jpg" alt="Leather Boots" loading="lazy">
+                                    <div class="product-info">
+                                        <h4>Vintage Leather Boots</h4>
+                                        <div class="sales-info">
+                                            <span class="text-gold">£110</span>
+                                            <small>95 sold</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-rank">
+                                    <div class="rank">3</div>
+                                    <img src="src/assets/images/products/ranks/eco-bag.jpg" alt="Eco Bag" loading="lazy">
+                                    <div class="product-info">
+                                        <h4>Eco Cotton Tote Bag</h4>
+                                        <div class="sales-info">
+                                            <span class="text-gold">£25</span>
+                                            <small>78 sold</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Transactions -->
+            <section class="recent-transactions mt-5">
+                <header class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0 fw-semibold">Recent Transactions</h5>
+                    <a href="#" class="text-decoration-none small fw-medium text-primary">View All</a>
+                </header>
+            
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">Order ID</th>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#ORD-1245</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="src/assets/images/dashboard/users/user1.jpg" alt="Emma Müller" class="rounded-circle" width="32" height="32" loading="lazy">
+                                        <span>Emma Müller</span>
+                                    </div>
+                                </td>
+                                <td>15 May 2023</td>
+                                <td>€189.00</td>
+                                <td><span class="badge bg-success-subtle text-success">Completed</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary" aria-label="View order #ORD-1245">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-1244</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="src/assets/images/dashboard/users/user2.jpg" alt="James Wilson" class="rounded-circle" width="32" height="32" loading="lazy">
+                                        <span>James Wilson</span>
+                                    </div>
+                                </td>
+                                <td>14 May 2023</td>
+                                <td>€245.50</td>
+                                <td><span class="badge bg-warning-subtle text-warning">Processing</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary" aria-label="View order #ORD-1244">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-1243</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="src/assets/images/dashboard/users/user3.jpg" alt="Sophie Martin" class="rounded-circle" width="32" height="32" loading="lazy">
+                                        <span>Sophie Martin</span>
+                                    </div>
+                                </td>
+                                <td>13 May 2023</td>
+                                <td>€320.00</td>
+                                <td><span class="badge bg-danger-subtle text-danger">Cancelled</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary" aria-label="View order #ORD-1243">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#ORD-1242</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="src/assets/images/dashboard/users/user4.jpg" alt="Thomas Schmidt" class="rounded-circle" width="32" height="32" loading="lazy">
+                                        <span>Thomas Schmidt</span>
+                                    </div>
+                                </td>
+                                <td>12 May 2023</td>
+                                <td>€175.75</td>
+                                <td><span class="badge bg-success-subtle text-success">Completed</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary" aria-label="View order #ORD-1242">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer py-3 text-center">
+        <p class="mb-0">© 2023 Aquilaboard. All rights reserved.</p>
+    </footer>
+</body>
+</html>
