@@ -9,15 +9,18 @@
     <title>Aquilaboard | Golden Eagle Dashboard</title>
     <link rel="icon" href="src/assets/images/logo/favicon.ico" type="image/x-icon">
     <!-- Preload key assets -->
-    <link rel="preload" href="src/assets/images/dashboard/fashion-grahic.svg" as="image">
-    <link rel="preload" href="src/assets/images/logo/aquilaboard-logo.svg" as="image">
+    <link rel="preload" href="/assets/images/dashboard/fashion-grahic.svg" as="image">
+    <link rel="preload" href="/assets/images/logo/aquilaboard-logo.svg" as="image">
+    <!-- Stylesheets -->
+     <link rel="stylesheet" href="src/scss/main.scss">
+
 </head>
 <body class="dashboard">
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
         <div class="sidebar-header" id="sidebarHeader">
             <div class="brand-logo">
-                <img src="src/assets/images/logo/aquilaboard-logo.svg" alt="Aquilaboard Logo" width="40">
+                <img src="/assets/images/logo/aquilaboard-logo.svg" alt="Aquilaboard Logo" width="40">
                 <span>Aquilaboard</span>
             </div>
             <button 
@@ -134,7 +137,7 @@
                 </button>
                 <div class="user-profile dropdown">
                     <button class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="src/assets/images/dashboard/admin.jpg" alt="Admin" class="avatar">
+                        <img src="/assets/images/dashboard/admin.jpg" alt="Admin" class="avatar">
                         <span>Admin</span>
                         <i class="bi bi-chevron-double-down"></i>
                     </button>
@@ -168,7 +171,7 @@
                 </div>
             
                 <div class="hero-graphic position-relative" data-gsap="fadeInLeft">
-                    <img src="src/assets/images/dashboard/fashion-grahic.svg" alt="Fashion Illustration" class="img-fluid" loading="lazy">
+                    <img src="/assets/images/dashboard/fashion-grahic.svg" alt="Fashion Illustration" class="img-fluid" loading="lazy">
                     <div class="hero-badge d-flex align-items-center gap-2 position-absolute top-0 end-0 p-2 bg-dark text-gold rounded">
                         <i class="bi bi-star-fill"></i>
                         <span>Top 10% Luxury Fashion</span>
@@ -261,14 +264,14 @@
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="category-card" data-category="accessories" data-gsap="fadeIn" data-delay="0.1">
                             <div class="category-preview">
-                                <img src="src/assets/images/categories/accessories.jpg" alt="Accessories" loading="lazy">
+                                <img src="/assets/images/categories/accessories.jpg" alt="Accessories" loading="lazy">
                                 <div class="category-overlay">
                                     <h3>Accessories</h3>
                                     <span class="badge bg-gold">6 items</span>
                                 </div>
                             </div>
                             <div class="category-meta">
-                                <p>From $29.99</p>
+                                <p>From £23.69</p>
                                 <button class="btn btn-outline-gold">Explore</button>
                             </div>
                         </div>
@@ -278,14 +281,14 @@
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="category-card" data-category="denims-jeans" data-gsap="fadeIn" data-delay="0.2">
                             <div class="category-preview">
-                                <img src="src/assets/images/categories/jeans.jpg" alt="Denims & Jeans" loading="lazy">
+                                <img src="/assets/images/categories/jeans.jpg" alt="Denims & Jeans" loading="lazy">
                                 <div class="category-overlay">
                                     <h3>Denims/Jeans</h3>
                                     <span class="badge bg-gold">5 items</span>
                                 </div>
                             </div>
                             <div class="category-meta">
-                                <p>From $49.99</p>
+                                <p>From £39.49</p>
                                 <button class="btn btn-outline-gold">Explore</button>
                             </div>
                         </div>
@@ -295,14 +298,14 @@
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="category-card" data-category="hoodies" data-gsap="fadeIn" data-delay="0.3">
                             <div class="category-preview">
-                                <img src="src/assets/images/categories/hoodie.jpg" alt="Hoodies" loading="lazy">
+                                <img src="/assets/images/categories/hoodie.jpg" alt="Hoodies" loading="lazy">
                                 <div class="category-overlay">
                                     <h3>Hoodies</h3>
                                     <span class="badge bg-gold">4 items</span>
                                 </div>
                             </div>
                             <div class="category-meta">
-                                <p>From $39.99</p>
+                                <p>From £31.59</p>
                                 <button class="btn btn-outline-gold">Explore</button>
                             </div>
                         </div>
@@ -312,14 +315,14 @@
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="category-card" data-category="silk-pants" data-gsap="fadeIn" data-delay="0.4">
                             <div class="category-preview">
-                                <img src="src/assets/images/categories/pants.jpg" alt="Silk Pants" loading="lazy">
+                                <img src="/assets/images/categories/pants.jpg" alt="Silk Pants" loading="lazy">
                                 <div class="category-overlay">
                                     <h3>Silk Pants</h3>
                                     <span class="badge bg-gold">4 items</span>
                                 </div>
                             </div>
                             <div class="category-meta">
-                                <p>From $59.99</p>
+                                <p>From £47.39</p>
                                 <button class="btn btn-outline-gold">Explore</button>
                             </div>
                         </div>
@@ -329,14 +332,14 @@
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="category-card" data-category="leather-shoes" data-gsap="fadeIn" data-delay="0.1">
                             <div class="category-preview">
-                                <img src="src/assets/images/categories/leather-shoe.jpg" alt="Leather Shoe" loading="lazy">
+                                <img src="/assets/images/categories/leather-shoe.jpg" alt="Leather Shoe" loading="lazy">
                                 <div class="category-overlay">
                                     <h3>Leather Shoes</h3>
                                     <span class="badge bg-gold">5 items</span>
                                 </div>
                             </div>
                             <div class="category-meta">
-                                <p>From $100</p>
+                                <p>From £79.00</p>
                                 <button class="btn btn-outline-gold">Explore</button>
                             </div>
                         </div>
@@ -346,14 +349,14 @@
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="category-card" data-category="vintage-shirts" data-gsap="fadeIn" data-delay="0.2">
                             <div class="category-preview">
-                                <img src="src/assets/images/categories/vintage.jpg" alt="Vintage Shirt" loading="lazy">
+                                <img src="/assets/images/categories/vintage.jpg" alt="Vintage Shirt" loading="lazy">
                                 <div class="category-overlay">
                                     <h3>Vintage Shirt</h3>
                                     <span class="badge bg-gold">4 items</span>
                                 </div>
                             </div>
                             <div class="category-meta">
-                                <p>From $79.99</p>
+                                <p>From £63.19</p>
                                 <button class="btn btn-outline-gold">Explore</button>
                             </div>
                         </div>
@@ -363,14 +366,14 @@
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="category-card" data-category="sneakers" data-gsap="fadeIn" data-delay="0.3">
                             <div class="category-preview">
-                                <img src="src/assets/images/categories/sneakers.jpg" alt="Sneakers" loading="lazy">
+                                <img src="/assets/images/categories/sneakers.jpg" alt="Sneakers" loading="lazy">
                                 <div class="category-overlay">
                                     <h3>Sneakers</h3>
                                     <span class="badge bg-gold">6 items</span>
                                 </div>
                             </div>
                             <div class="category-meta">
-                                <p>From $259.99</p>
+                                <p>From £234.67</p>
                                 <button class="btn btn-outline-gold">Explore</button>
                             </div>
                         </div>
@@ -380,14 +383,14 @@
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="category-card" data-category="polo-shirts" data-gsap="fadeIn" data-delay="0.4">
                             <div class="category-preview">
-                                <img src="src/assets/images/categories/polo.jpg" alt="Polo Shirts" loading="lazy">
+                                <img src="/assets/images/categories/polo.jpg" alt="Polo Shirts" loading="lazy">
                                 <div class="category-overlay">
                                     <h3>Polo Shirts</h3>
                                     <span class="badge bg-gold">5 items</span>
                                 </div>
                             </div>
                             <div class="category-meta">
-                                <p>From $29.99</p>
+                                <p>From £23.69</p>
                                 <button class="btn btn-outline-gold">Explore</button>
                             </div>
                         </div>
@@ -397,14 +400,14 @@
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="category-card" data-category="jackets" data-gsap="fadeIn" data-delay="0.1">
                             <div class="category-preview">
-                                <img src="src/assets/images/categories/jackets.jpg" alt="Jackets" loading="lazy">
+                                <img src="/assets/images/categories/jackets.jpg" alt="Jackets" loading="lazy">
                                 <div class="category-overlay">
                                     <h3>Jackets</h3>
                                     <span class="badge bg-gold">5 items</span>
                                 </div>
                             </div>
                             <div class="category-meta">
-                                <p>From $287.99</p>
+                                <p>From £227.51</p>
                                 <button class="btn btn-outline-gold">Explore</button>
                             </div>
                         </div>
@@ -524,7 +527,7 @@
                             <div class="card-body">
                                 <div class="product-rank">
                                     <div class="rank">1</div>
-                                    <img src="src/assets/images/products/ranks/wool-coat.jpg" alt="Wool Coat" loading="lazy">
+                                    <img src="/assets/images/ranks/wool-coat.jpg" alt="Wool Coat" loading="lazy">
                                     <div class="product-info">
                                         <h4>Wool Blend Coat</h4>
                                         <div class="sales-info">
@@ -535,7 +538,7 @@
                                 </div>
                                 <div class="product-rank">
                                     <div class="rank">2</div>
-                                    <img src="src/assets/images/products/ranks/leather-boot.jpg" alt="Leather Boots" loading="lazy">
+                                    <img src="/assets/images/ranks/leather-boot.jpg" alt="Leather Boots" loading="lazy">
                                     <div class="product-info">
                                         <h4>Vintage Leather Boots</h4>
                                         <div class="sales-info">
@@ -546,7 +549,7 @@
                                 </div>
                                 <div class="product-rank">
                                     <div class="rank">3</div>
-                                    <img src="src/assets/images/products/ranks/eco-bag.jpg" alt="Eco Bag" loading="lazy">
+                                    <img src="/assets/images/ranks/eco-bag.jpg" alt="Eco Bag" loading="lazy">
                                     <div class="product-info">
                                         <h4>Eco Cotton Tote Bag</h4>
                                         <div class="sales-info">
@@ -585,12 +588,12 @@
                                 <td>#ORD-1245</td>
                                 <td>
                                     <div class="d-flex align-items-center gap-2">
-                                        <img src="src/assets/images/dashboard/users/user1.jpg" alt="Emma Müller" class="rounded-circle" width="32" height="32" loading="lazy">
+                                        <img src="/assets/images/dashboard/users/user1.jpg" alt="Emma Müller" class="rounded-circle" width="32" height="32" loading="lazy">
                                         <span>Emma Müller</span>
                                     </div>
                                 </td>
                                 <td>15 May 2023</td>
-                                <td>€189.00</td>
+                                <td>£160.65</td>
                                 <td><span class="badge bg-success-subtle text-success">Completed</span></td>
                                 <td>
                                     <button class="btn btn-sm btn-outline-secondary" aria-label="View order #ORD-1245">
@@ -602,12 +605,12 @@
                                 <td>#ORD-1244</td>
                                 <td>
                                     <div class="d-flex align-items-center gap-2">
-                                        <img src="src/assets/images/dashboard/users/user2.jpg" alt="James Wilson" class="rounded-circle" width="32" height="32" loading="lazy">
+                                        <img src="/assets/images/dashboard/users/user2.jpg" alt="James Wilson" class="rounded-circle" width="32" height="32" loading="lazy">
                                         <span>James Wilson</span>
                                     </div>
                                 </td>
                                 <td>14 May 2023</td>
-                                <td>€245.50</td>
+                                <td>£208.68</td>
                                 <td><span class="badge bg-warning-subtle text-warning">Processing</span></td>
                                 <td>
                                     <button class="btn btn-sm btn-outline-secondary" aria-label="View order #ORD-1244">
@@ -619,12 +622,12 @@
                                 <td>#ORD-1243</td>
                                 <td>
                                     <div class="d-flex align-items-center gap-2">
-                                        <img src="src/assets/images/dashboard/users/user3.jpg" alt="Sophie Martin" class="rounded-circle" width="32" height="32" loading="lazy">
+                                        <img src="/assets/images/dashboard/users/user3.jpg" alt="Sophie Martin" class="rounded-circle" width="32" height="32" loading="lazy">
                                         <span>Sophie Martin</span>
                                     </div>
                                 </td>
                                 <td>13 May 2023</td>
-                                <td>€320.00</td>
+                                <td>£272.00</td>
                                 <td><span class="badge bg-danger-subtle text-danger">Cancelled</span></td>
                                 <td>
                                     <button class="btn btn-sm btn-outline-secondary" aria-label="View order #ORD-1243">
@@ -636,7 +639,7 @@
                                 <td>#ORD-1242</td>
                                 <td>
                                     <div class="d-flex align-items-center gap-2">
-                                        <img src="src/assets/images/dashboard/users/user4.jpg" alt="Thomas Schmidt" class="rounded-circle" width="32" height="32" loading="lazy">
+                                        <img src="/assets/images/dashboard/users/user4.jpg" alt="Thomas Schmidt" class="rounded-circle" width="32" height="32" loading="lazy">
                                         <span>Thomas Schmidt</span>
                                     </div>
                                 </td>
