@@ -4,9 +4,11 @@ import path from 'path';
 export default defineConfig({
   root: 'src',
   base: './',
+  publicDir: '../public',
   build: {
     outDir: '../dist',
     emptyOutDir: true,
+    assetsInlineLimit: 4096, // 4KB
   },
   resolve: {
     alias: {
