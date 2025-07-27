@@ -1,3 +1,38 @@
+/* ==== SCSS Structure === */
+
+/* Abstracts: */
+@use './abstracts/variables' as *;
+@use './abstracts/mixins' as *;
+@use './abstracts/functions' as *;
+
+/* Base Styles: */
+@use './base/base' as *;
+@use './base/typography' as *;
+@use './base/reset' as *;
+
+/* Layout: */
+@use './layout/header' as *;
+@use './layout/sidebar' as *;
+@use './layout/footer' as *;
+@use './layout/navbar' as *;
+
+/* Components: */
+@use './components/buttons' as *;
+@use './components/cards' as *;
+@use './components/categoryGrid' as *;
+@use './components/charts' as *;
+@use './components/metrics' as *;
+@use './components/modals' as *;
+
+/* Pages: */
+@use './pages/dashboard' as *;
+@use './pages/hero' as *;
+@use './pages/marketInsights' as *;
+@use './pages/transactions' as *;
+
+/* Themes: */
+@use './themes/dark-mode' as *;
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 *::before,
 *::after {
