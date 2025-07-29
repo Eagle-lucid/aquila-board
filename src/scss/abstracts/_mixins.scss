@@ -1,0 +1,287 @@
+/* ===== AQUILABOARD DESIGN SYSTEM MIXINS ===== */
+@use "sass:map";
+@use "sass:math";
+@use "./variables" as *;
+@use "./functions" as fn;
+
+// ===== CORE UTILITIES =====
+
+/// Responsive breakpoint manager
+/// @param {String} $breakpoint - Breakpoint name (xs, sm, md, lg, xl)
+@mixin respond-to($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$breakpoint}' not found";
+  }
+}
+
+/// Perfectly center element
+/// @param {String} $position - Positioning type (absolute/fixed)
+@mixin center($position: absolute) {
+  position: $position;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/// Maintain aspect ratio container
+/// @param {Number} $width - Ratio width
+/// @param {Number} $height - Ratio height
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    padding-top: math.div($height, $width) * 100%;
+  }
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+// ===== THEME SYSTEM =====
+
+/// Apply theme variables
+/// @param {String} $theme - Theme type (light/dark)
+@mixin theme($theme: 'light') {
+  @if $theme == 'dark' {
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-bg: #{fn.theme-color('background', 'dark')};
+        --color-surface: #{fn.theme-color('surface', 'dark')};
+        --color-text: #{fn.theme-color('text', 'dark')};
+        --color-accent: #{fn.theme-color('accent', 'dark')};
+      }
+    }
+  } @else {
+    --color-bg: #{fn.theme-color('background', 'light')};
+    --color-surface: #{fn.theme-color('surface', 'light')};
+    --color-text: #{fn.theme-color('text', 'light')};
+    --color-accent: #{fn.theme-color('accent', 'light')};
+  }
+}
+
+/// Premium transition effect
+/// @param {List} $properties - Properties to transition
+@mixin luxury-transition($properties: all, $duration: 300ms) {
+  transition: $properties $duration cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+// ===== TYPOGRAPHY =====
+
+/// Elegant text styling
+/// @param {String} $size - Font size key
+/// @param {String} $weight - Font weight key
+/// @param {String} $case - Text transform (uppercase/smallcaps)
+@mixin elegant-text($size: 'base', $weight: 'normal', $case: null) {
+  font-size: map.get($font-sizes, $size);
+  font-weight: map.get($font-weights, $weight);
+  font-family: map.get($font-families, 'display');
+  line-height: map.get($line-heights, 'normal');
+
+  @if $case == 'uppercase' {
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  } @else if $case == 'smallcaps' {
+    font-variant: small-caps;
+    letter-spacing: 0.03em;
+  }
+}
+
+/// Fluid responsive typography
+/// @param {Number} $min-size - Minimum font size (px)
+/// @param {Number} $max-size - Maximum font size (px)
+@mixin responsive-text($min-size, $max-size) {
+  font-size: clamp(
+    fn.rem($min-size), 
+    #{math.div($min-size, 16) * 1}vw, 
+    fn.rem($max-size)
+  );
+}
+
+// ===== LUXURY EFFECTS =====
+
+/// Gold interactive effects
+/// @param {Number} $intensity - Glow intensity (0-1)
+@mixin gold-accent($intensity: 0.3) {
+  @include luxury-transition;
+  
+  &:hover {
+    box-shadow: 0 0 12px 3px rgba(map.get($gold-palette, 'gold-400'), $intensity);
+  }
+  
+  &:active {
+    transform: translateY(1px) scale(0.98);
+  }
+}
+
+/// Premium shimmer animation
+@mixin gold-shimmer {
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: fn.gold-gradient();
+    transform: rotate(30deg);
+    opacity: 0;
+    @include luxury-transition(opacity);
+  }
+  
+  &:hover::after {
+    opacity: 0.3;
+    animation: shimmer 2s ease infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { transform: translateX(-100%) rotate(30deg); }
+    100% { transform: translateX(100%) rotate(30deg); }
+  }
+}
+
+/// Layered depth shadow
+/// @param {Number} $layers - Number of shadow layers
+@mixin layered-shadow($layers: 3) {
+  box-shadow: 
+    0 1px 1px rgba(0,0,0,0.08),
+    0 2px 2px rgba(0,0,0,0.06),
+    0 4px 4px rgba(0,0,0,0.04);
+}
+
+// ===== UI COMPONENTS =====
+
+/// Luxury product card
+/// @param {String} $elevation - Shadow size (sm/md/lg)
+@mixin luxury-card($elevation: 'md') {
+  background: fn.theme-color('surface');
+  border-radius: map.get($border-radius, 'xl');
+  @include layered-shadow;
+  @include luxury-transition(transform box-shadow);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: map.get($shadows, '2xl');
+  }
+}
+
+/// Premium gold button
+/// @param {String} $size - Button size (sm/md/lg)
+@mixin gold-button($size: 'md') {
+  $sizes: (
+    'sm': (padding: 0.5rem 1.25rem, font-size: map.get($font-sizes, 'sm')),
+    'md': (padding: 0.75rem 1.75rem, font-size: map.get($font-sizes, 'base')),
+    'lg': (padding: 1rem 2.25rem, font-size: map.get($font-sizes, 'lg'))
+  );
+
+  @include elegant-text($case: 'uppercase');
+  @include gold-accent;
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: map.get(map.get($sizes, $size), 'padding');
+  font-size: map.get(map.get($sizes, $size), 'font-size');
+  background: fn.gold-metallic();
+  color: fn.contrast-color(map.get($gold-palette, 'gold-400'));
+  border: none;
+  border-radius: map.get($border-radius, 'full');
+  cursor: pointer;
+  
+  &:hover {
+    background: fn.gold-metallic('45deg', 0.8);
+  }
+  
+  .bi {
+    margin-right: 0.5rem;
+  }
+}
+
+/// Fashion status badge
+/// @param {String} $type - Badge type (new/sale/vip/limited)
+@mixin fashion-badge($type: 'new') {
+  $types: (
+    'new': (bg: map.get($utility-colors, 'success'), text: white),
+    'sale': (bg: map.get($utility-colors, 'danger'), text: white),
+    'vip': (bg: map.get($gold-palette, 'gold-400'), text: black),
+    'limited': (bg: map.get($neutral-palette, 'black'), text: white)
+  );
+
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  background: map.get(map.get($types, $type), 'bg');
+  color: map.get(map.get($types, $type), 'text');
+  font-size: map.get($font-sizes, 'xs');
+  font-weight: map.get($font-weights, 'bold');
+  border-radius: map.get($border-radius, 'full');
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: map.get($z-indices, '10');
+  @include elegant-text($size: 'xs', $weight: 'bold', $case: 'uppercase');
+  
+  @if $type == 'vip' {
+    @include gold-shimmer;
+  }
+}
+
+// ===== BROWSER UTILITIES =====
+
+/// Custom styled scrollbar
+/// @param {Color} $color - Scrollbar color
+@mixin custom-scrollbar($color: map.get($gold-palette, 'gold-400')) {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba($color, 0.1);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba($color, 0.5);
+    border-radius: 4px;
+    &:hover {
+      background: rgba($color, 0.7);
+    }
+  }
+}
+
+// ===== ANIMATIONS =====
+
+/// Fade-in animation
+/// @param {Number} $duration - Animation duration
+@mixin fade-in($duration: 0.5s) {
+  opacity: 0;
+  animation: fadeIn $duration ease forwards;
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+}
+
+/// Luxury loading shimmer
+@mixin loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(fn.theme-color('surface'), 0.8) 25%,
+    rgba(map.get($gold-palette, 'gold-100'), 0.4) 50%,
+    rgba(fn.theme-color('surface'), 0.8) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+}
