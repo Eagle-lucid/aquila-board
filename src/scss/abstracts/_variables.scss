@@ -1,0 +1,240 @@
+/* ===== AQUILABOARD DESIGN SYSTEM ===== */
+@use "sass:map";
+@use "sass:color";
+
+// ======== COLOR SYSTEM ========
+$gold-palette: (
+  'gold-50': hsl(46, 85%, 92%),
+  'gold-100': hsl(46, 75%, 82%),
+  'gold-200': hsl(46, 70%, 72%),
+  'gold-300': hsl(46, 65%, 62%),
+  'gold-400': hsl(46, 65%, 52%), // Primary brand gold
+  'gold-500': hsl(46, 59%, 45%), // Dark gold
+  'gold-600': hsl(46, 55%, 38%),
+  'gold-700': hsl(46, 50%, 30%),
+  'gold-800': hsl(46, 45%, 22%),
+  'gold-900': hsl(46, 40%, 15%)
+);
+
+$neutral-palette: (
+  'white': hsl(0, 0%, 100%),
+  'gray-50': hsl(0, 0%, 98%),
+  'gray-100': hsl(0, 0%, 95%),
+  'gray-200': hsl(0, 0%, 90%),
+  'gray-300': hsl(0, 0%, 83%),
+  'gray-400': hsl(0, 0%, 60%),
+  'gray-500': hsl(0, 0%, 50%),
+  'gray-600': hsl(0, 0%, 35%),
+  'gray-700': hsl(0, 0%, 25%),
+  'gray-800': hsl(0, 0%, 15%),
+  'gray-900': hsl(0, 0%, 7%),
+  'black': hsl(0, 0%, 0%)
+);
+
+$utility-colors: (
+  'success': hsl(152, 69%, 31%),
+  'warning': hsl(42, 100%, 50%),
+  'danger': hsl(0, 84%, 60%),
+  'info': hsl(201, 96%, 50%),
+  'primary': map.get($gold-palette, 'gold-400'),
+  'secondary': map.get($neutral-palette, 'gray-800')
+);
+
+// ======== THEMES ========
+$light-theme: (
+  'background': map.get($neutral-palette, 'gray-50'),
+  'surface': map.get($neutral-palette, 'white'),
+  'text': map.get($neutral-palette, 'gray-900'),
+  'text-muted': map.get($neutral-palette, 'gray-600'),
+  'border': map.get($neutral-palette, 'gray-200'),
+  'accent': map.get($gold-palette, 'gold-400')
+);
+
+$dark-theme: (
+  'background': map.get($neutral-palette, 'gray-900'),
+  'surface': map.get($neutral-palette, 'gray-800'),
+  'text': map.get($neutral-palette, 'white'),
+  'text-muted': map.get($neutral-palette, 'gray-400'),
+  'border': map.get($neutral-palette, 'gray-700'),
+  'accent': map.get($gold-palette, 'gold-400')
+);
+
+// ======== TYPOGRAPHY ========
+$font-families: (
+  'sans': "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+  'display': "'Poppins', 'Inter', -apple-system, sans-serif",
+  'mono': "SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+);
+
+$font-sizes: (
+  'xs': 0.75rem,    // 12px
+  'sm': 0.875rem,   // 14px
+  'base': 1rem,     // 16px
+  'lg': 1.125rem,   // 18px
+  'xl': 1.25rem,    // 20px
+  '2xl': 1.5rem,    // 24px
+  '3xl': 1.875rem,  // 30px
+  '4xl': 2.25rem,   // 36px
+  '5xl': 3rem,      // 48px
+  '6xl': 3.75rem    // 60px
+);
+
+$font-weights: (
+  'light': 300,
+  'normal': 400,
+  'medium': 500,
+  'semibold': 600,
+  'bold': 700,
+  'extrabold': 800,
+  'black': 900
+);
+
+$line-heights: (
+  'none': 1,
+  'tight': 1.25,
+  'normal': 1.5,
+  'loose': 1.75
+);
+
+// ======== SPACING & SIZING ========
+$spacing: (
+  '0': 0,
+  'px': 1px,
+  '0.5': 0.125rem,  // 2px
+  '1': 0.25rem,     // 4px
+  '1.5': 0.375rem,  // 6px
+  '2': 0.5rem,      // 8px
+  '2.5': 0.625rem,  // 10px
+  '3': 0.75rem,     // 12px
+  '3.5': 0.875rem,  // 14px
+  '4': 1rem,        // 16px
+  '5': 1.25rem,     // 20px
+  '6': 1.5rem,      // 24px
+  '7': 1.75rem,     // 28px
+  '8': 2rem,        // 32px
+  '9': 2.25rem,     // 36px
+  '10': 2.5rem,     // 40px
+  '11': 2.75rem,    // 44px
+  '12': 3rem,       // 48px
+  '14': 3.5rem,     // 56px
+  '16': 4rem,       // 64px
+  '20': 5rem        // 80px
+);
+
+// ======== BORDERS ========
+$border-radius: (
+  'none': 0,
+  'sm': 0.125rem,   // 2px
+  'md': 0.25rem,    // 4px
+  'lg': 0.5rem,     // 8px
+  'xl': 0.75rem,    // 12px
+  '2xl': 1rem,      // 16px
+  '3xl': 1.5rem,    // 24px
+  'full': 9999px
+);
+
+$border-widths: (
+  '0': 0,
+  '1': 1px,
+  '2': 2px,
+  '4': 4px,
+  '8': 8px
+);
+
+// ======== EFFECTS ========
+$shadows: (
+  'xs': 0 1px 2px 0 rgba(0, 0, 0, 0.05),
+  'sm': 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+  'md': 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  'lg': 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  'xl': 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  '2xl': 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+  'gold-glow': 0 0 10px 2px rgba(map.get($gold-palette, 'gold-400'), 0.3),
+  'inner': inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)
+);
+
+// ======== TRANSITIONS ========
+$transition-durations: (
+  '75': 75ms,
+  '100': 100ms,
+  '150': 150ms,
+  '200': 200ms,
+  '300': 300ms,
+  '500': 500ms,
+  '700': 700ms,
+  '1000': 1000ms
+);
+
+$transition-timing: (
+  'linear': linear,
+  'in': cubic-bezier(0.4, 0, 1, 1),
+  'out': cubic-bezier(0, 0, 0.2, 1),
+  'in-out': cubic-bezier(0.4, 0, 0.2, 1)
+);
+
+// ======== Z-INDEX ========
+$z-indices: (
+  'auto': auto,
+  '0': 0,
+  '10': 10,
+  '20': 20,
+  '30': 30,
+  '40': 40,
+  '50': 50,
+  'dropdown': 1000,
+  'sticky': 1020,
+  'fixed': 1030,
+  'modal': 1040,
+  'popover': 1050,
+  'tooltip': 1060,
+  'toast': 1070
+);
+
+// ======== BREAKPOINTS ========
+$breakpoints: (
+  'xs': 0,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  '2xl': 1400px,
+  '3xl': 1600px
+);
+
+// ======== UTILITY FUNCTIONS ========
+@function color($name, $opacity: 1) {
+  @if map.has-key($gold-palette, $name) {
+    @return rgba(map.get($gold-palette, $name), $opacity);
+  }
+  @if map.has-key($neutral-palette, $name) {
+    @return rgba(map.get($neutral-palette, $name), $opacity);
+  }
+  @if map.has-key($utility-colors, $name) {
+    @return rgba(map.get($utility-colors, $name), $opacity);
+  }
+  @warn "Color '#{$name}' not found";
+  @return null;
+}
+
+@function theme-color($key, $theme: 'light') {
+  $theme-map: if($theme == 'light', $light-theme, $dark-theme);
+  @return map.get($theme-map, $key);
+}
+
+@function size($key, $map: $spacing) {
+  @if map.has-key($map, $key) {
+    @return map.get($map, $key);
+  }
+  @warn "Size '#{$key}' not found in map";
+  @return null;
+}
+
+// ======== EXPORTS ========
+:export {
+  @each $name, $value in $gold-palette {
+    gold-#{$name}: #{$value};
+  }
+  @each $name, $value in $neutral-palette {
+    neutral-#{$name}: #{$value};
+  }
+}
