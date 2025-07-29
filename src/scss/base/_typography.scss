@@ -1,0 +1,79 @@
+/* ===== AQUILABOARD TYPOGRAPHY ===== */
+@use "../variables" as *;
+@use "../mixins" as *;
+
+/* Heading scale */
+h1, h2, h3, h4, h5, h6 {
+  font-family: map.get($font-families, 'display');
+  font-weight: map.get($font-weights, 'bold');
+  line-height: map.get($line-heights, 'tight');
+  color: theme-color('text');
+}
+
+h1 {
+  font-size: heading-size(1);
+  @include responsive-text(32, 48);
+}
+
+h2 {
+  font-size: heading-size(2);
+  @include responsive-text(28, 36);
+}
+
+h3 {
+  font-size: heading-size(3);
+  @include responsive-text(24, 30);
+}
+
+/* Body text */
+p {
+  margin-bottom: space(3);
+  max-width: 65ch;
+  line-height: map.get($line-heights, 'relaxed');
+}
+
+/* Text variants */
+.text {
+  &-lead {
+    font-size: map.get($font-sizes, 'lg');
+    line-height: map.get($line-heights, 'loose');
+  }
+  
+  &-muted {
+    color: theme-color('text-muted');
+  }
+  
+  &-gold {
+    color: gold('400');
+  }
+  
+  &-uppercase {
+    @include elegant-text($case: 'uppercase');
+  }
+  
+  &-smallcaps {
+    @include elegant-text($case: 'smallcaps');
+  }
+  &-gold {
+    color: theme-color('accent');
+  }
+}
+
+/* Links */
+a {
+  @include luxury-transition(color);
+  color: gold('400');
+  
+  &:hover {
+    color: gold('500');
+    text-decoration: underline;
+  }
+}
+
+/* Code/Preformatted */
+code, pre {
+  font-family: map.get($font-families, 'mono');
+  background: rgba(theme-color('text'), 0.08);
+  padding: 0.2em 0.4em;
+  border-radius: map.get($border-radius, 'sm');
+}
