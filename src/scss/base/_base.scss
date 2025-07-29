@@ -4,6 +4,9 @@
 
 :root {
   @include theme('light');
+  --z-navbar: 1000;
+  --z-modal: 1100;
+  --z-tooltip: 1200;
 }
 
 body {
@@ -69,9 +72,3 @@ img, picture, video, canvas, svg {
   height: auto;
 }
 
-// root variables for z-index
-:root {
-  --z-navbar: 1000;
-  --z-modal: 1100;
-  --z-tooltip: 1200;
-}
