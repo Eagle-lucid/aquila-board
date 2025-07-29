@@ -1,0 +1,345 @@
+/* ===== AQUILABOARD DESIGN SYSTEM FUNCTIONS ===== */
+@use "sass:map";
+@use "sass:math";
+@use "sass:color";
+@use "sass:meta";
+@use "./variables" as *;
+
+// ======== CORE COLOR FUNCTIONS ========
+
+/// Get color from any palette with optional opacity
+/// @param {String} $name - Color name (e.g., 'gold-400', 'gray-800')
+/// @param {Number} $opacity - Opacity value (0-1)
+/// @return {Color} - RGBA color value
+@function color($name, $opacity: 1) {
+  @if map.has-key($gold-palette, $name) {
+    @return rgba(map.get($gold-palette, $name), $opacity);
+  }
+  @if map.has-key($neutral-palette, $name) {
+    @return rgba(map.get($neutral-palette, $name), $opacity);
+  }
+  @if map.has-key($utility-colors, $name) {
+    @return rgba(map.get($utility-colors, $name), $opacity);
+  }
+  @warn "Color '#{$name}' not found in any palette";
+  @return null;
+}
+
+/// Get opaque version of color (removes alpha channel)
+/// @param {Color} $color - Color to make opaque
+/// @return {Color} - RGB color value
+@function opaque($color) {
+  @return rgb(red($color), green($color), blue($color));
+}
+
+/// Get CSS variable with optional fallback
+/// @param {String} $var - CSS variable name
+/// @param {Mixed} $fallback - Fallback value
+/// @return {String} - CSS var() function
+@function css-var($var, $fallback: null) {
+  @return if($fallback, 
+    unquote("var(--#{$var}, #{$fallback})"), 
+    unquote("var(--#{$var})")
+  );
+}
+
+// ======== THEME FUNCTIONS ========
+
+/// Get theme-aware color value
+/// @param {String} $key - Theme color key
+/// @param {String} $theme - Theme variant ('light' or 'dark')
+/// @return {Color} - Color value
+@function theme-color($key, $theme: 'light') {
+  $theme-map: if($theme == 'light', $light-theme, $dark-theme);
+  @if not map.has-key($theme-map, $key) {
+    @warn "Key '#{$key}' not found in #{$theme} theme";
+  }
+  @return map.get($theme-map, $key);
+}
+
+/// Create gradient between theme colors
+/// @param {String} $direction - Gradient direction
+/// @param {String} $from - Start color key
+/// @param {String} $to - End color key
+/// @param {String} $theme - Theme variant
+/// @return {String} - CSS gradient value
+@function theme-gradient($direction: 'to right', $from: 'background', $to: 'accent', $theme: 'light') {
+  @return linear-gradient(
+    #{$direction},
+    theme-color($from, $theme),
+    theme-color($to, $theme)
+  );
+}
+
+// ======== GOLD COLOR FUNCTIONS ========
+
+/// Get gold color with optional adjustment
+/// @param {String} $level - Gold shade level (100-900)
+/// @param {Number} $adjust - Percentage to adjust (-100% to 100%)
+/// @return {Color} - Gold color value
+@function gold($level: '400', $adjust: 0%) {
+  $color: map.get($gold-palette, 'gold-#{$level}');
+  @if $adjust != 0% {
+    @return adjust-tone($color, $adjust);
+  }
+  @return $color;
+}
+
+/// Create premium metallic gold gradient
+/// @param {String} $direction - Gradient direction
+/// @param {Number} $intensity - Metallic effect intensity (0-1)
+/// @return {String} - CSS gradient value
+@function gold-metallic($direction: '135deg', $intensity: 0.7) {
+  @return linear-gradient(
+    #{$direction},
+    adjust-tone(gold('300'), -10%),
+    gold('400'),
+    adjust-tone(gold('500'), 10%),
+    gold('400'),
+    adjust-tone(gold('300'), -10%)
+  );
+}
+
+// ======== TYPOGRAPHY FUNCTIONS ========
+
+/// Get font size with optional line height
+/// @param {String} $size - Size key from $font-sizes
+/// @param {String} $line-height - Line height key
+/// @return {String} - CSS font-size[/line-height] value
+@function font-size($size: 'base', $line-height: null) {
+  $size-value: map.get($font-sizes, $size);
+  @if $line-height {
+    @return #{$size-value}/#{map.get($line-heights, $line-height)};
+  }
+  @return $size-value;
+}
+
+/// Calculate heading size based on level
+/// @param {Number} $level - Heading level (1-6)
+/// @return {Number} - Font size value
+@function heading-size($level: 1) {
+  $base: map.get($font-sizes, '3xl');
+  $ratio: 1.2;
+  @return $base * math.pow($ratio, 3 - $level);
+}
+
+/// Calculate modular scale value
+/// @param {Number} $step - Scale step
+/// @param {Number} $base - Base size
+/// @param {Number} $ratio - Scale ratio
+/// @return {Number} - Scaled value
+@function modular-scale($step: 0, $base: 1rem, $ratio: 1.25) {
+  @return $base * math.pow($ratio, $step);
+}
+
+// ======== SPACING & LAYOUT FUNCTIONS ========
+
+/// Get spacing value
+/// @param {String|Number} $key - Spacing key or multiplier
+/// @return {Number} - Spacing value
+@function space($key: 4) {
+  @if meta.type-of($key) == 'number' {
+    @return $key * map.get($spacing, '1');
+  }
+  @return map.get($spacing, $key);
+}
+
+/// Calculate aspect ratio padding
+/// @param {Number} $width - Aspect width
+/// @param {Number} $height - Aspect height
+/// @return {Number} - Padding percentage
+@function aspect-padding($width, $height) {
+  @return math.div($height, $width) * 100%;
+}
+
+// ======== UNIT CONVERSION ========
+
+/// Convert pixels to rems
+/// @param {Number} $px - Pixel value
+/// @return {Number} - Rem value
+@function rem($px) {
+  @return math.div($px, 16) * 1rem;
+}
+
+/// Convert pixels to ems
+/// @param {Number} $px - Pixel value
+/// @param {Number} $context - Base context (default 16px)
+/// @return {Number} - Em value
+@function em($px, $context: 16) {
+  @return math.div($px, $context) * 1em;
+}
+
+// ======== MATH UTILITIES ========
+
+/// Clamp value between min and max
+/// @param {Number} $value - Input value
+/// @param {Number} $min - Minimum value
+/// @param {Number} $max - Maximum value
+/// @return {Number} - Clamped value
+@function clamp-value($value, $min, $max) {
+  @return if($value > $max, $max, if($value < $min, $min, $value));
+}
+
+/// Strip unit from value
+/// @param {Number} $number - Number with unit
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if meta.type-of($number) == 'number' and not math.is-unitless($number) {
+    @return math.div($number, $number * 0 + 1);
+  }
+  @return $number;
+}
+
+// ======== COLOR MANIPULATION ========
+
+/// Adjust color tone (lighten/darken)
+/// @param {Color} $color - Base color
+/// @param {Number} $percent - Adjustment percentage (-100% to 100%)
+/// @return {Color} - Adjusted color
+@function adjust-tone($color, $percent) {
+  @if $percent == 0 { @return $color; }
+  @if $percent > 0 {
+    @return color.mix(white, $color, $percent);
+  } @else {
+    @return color.mix(black, $color, -$percent);
+  }
+}
+
+/// Get accessible contrast color
+/// @param {Color} $background - Background color
+/// @param {String} $theme - Theme context
+/// @return {Color} - Contrasting text color
+@function contrast-color($background, $theme: 'light') {
+  $light-text: theme-color('text', 'light');
+  $dark-text: theme-color('text', 'dark');
+  $threshold: if($theme == 'light', 60%, 40%);
+  
+  @if color.lightness($background) > $threshold {
+    @return $dark-text;
+  } @else {
+    @return $light-text;
+  }
+}
+
+/// Blend two colors
+/// @param {Color} $color1 - First color
+/// @param {Color} $color2 - Second color
+/// @param {Number} $weight - Blend percentage (0-100)
+/// @return {Color} - Blended color
+@function blend-colors($color1, $color2, $weight: 50%) {
+  @return color.mix($color1, $color2, $weight);
+}
+
+// ======== SHADOW EFFECTS ========
+
+/// Generate layered shadow effect
+/// @param {Number} $layers - Number of shadow layers
+/// @param {String} $type - Shadow type ('soft' or 'hard')
+/// @return {List} - CSS shadow values
+@function layered-shadow($layers: 3, $type: 'soft') {
+  $shadow: ();
+  $base-blur: if($type == 'soft', 5px, 3px);
+  $base-spread: if($type == 'soft', 1px, 0);
+  
+  @for $i from 1 through $layers {
+    $offset: $i * 2px;
+    $blur: $base-blur * $i;
+    $spread: $base-spread * $i;
+    $opacity: 0.1 / $i;
+    $shadow: append($shadow, #{$offset} #{$offset} #{$blur} #{$spread} rgba(0,0,0,$opacity), comma);
+  }
+  
+  @return $shadow;
+}
+
+// ======== THEME UTILITIES ========
+
+/// Get z-index value
+/// @param {String} $key - Z-index key
+/// @return {Number} - Z-index value
+@function z($key) {
+  @if not map.has-key($z-indices, $key) {
+    @warn "Z-index '#{$key}' not found";
+    @return 0;
+  }
+  @return map.get($z-indices, $key);
+}
+
+/// Get breakpoint value
+/// @param {String} $key - Breakpoint key
+/// @return {Number} - Breakpoint value
+@function breakpoint($key) {
+  @if not map.has-key($breakpoints, $key) {
+    @warn "Breakpoint '#{$key}' not found";
+    @return null;
+  }
+  @return map.get($breakpoints, $key);
+}
+
+// ======== LUXURY EFFECTS ========
+
+/// Create velvet texture gradient
+/// @param {Color} $base-color - Base color
+/// @return {String} - CSS gradient value
+@function velvet-texture($base-color) {
+  @return linear-gradient(
+    135deg,
+    adjust-tone($base-color, -15%),
+    $base-color,
+    adjust-tone($base-color, 10%),
+    $base-color,
+    adjust-tone($base-color, -15%)
+  );
+}
+
+/// Create silk fabric effect
+/// @param {Color} $base-color - Base color
+/// @return {String} - CSS gradient value
+@function silk-effect($base-color) {
+  @return repeating-linear-gradient(
+    -45deg,
+    $base-color,
+    $base-color 10px,
+    adjust-tone($base-color, 5%) 10px,
+    adjust-tone($base-color, 5%) 20px
+  );
+}
+
+// ======== NEW ADDITIONS ========
+
+/// Calculate golden ratio proportion
+/// @param {Number} $value - Base value
+/// @param {Boolean} $larger - Return larger or smaller proportion
+/// @return {Number} - Golden ratio proportion
+@function golden-ratio($value, $larger: true) {
+  $ratio: 1.618;
+  @return if($larger, $value * $ratio, $value / $ratio);
+}
+
+/// Create duotone effect
+/// @param {Color} $light-color - Light color
+/// @param {Color} $dark-color - Dark color
+/// @return {String} - CSS gradient value
+@function duotone-effect($light-color, $dark-color) {
+  @return linear-gradient(
+    to bottom right,
+    $light-color,
+    $dark-color
+  );
+}
+
+/// Calculate fluid typography values
+/// @param {Number} $min-size - Minimum font size (px)
+/// @param {Number} $max-size - Maximum font size (px)
+/// @param {Number} $min-width - Minimum viewport width (px)
+/// @param {Number} $max-width - Maximum viewport width (px)
+/// @return {String} - CSS clamp() function
+@function fluid-text($min-size, $max-size, $min-width: 320, $max-width: 1200) {
+  $slope: math.div($max-size - $min-size, $max-width - $min-width);
+  $y-axis: $min-size - $slope * $min-width;
+  @return clamp(
+    #{$min-size}px,
+    #{$y-axis}px + #{$slope * 100}vw,
+    #{$max-size}px
+  );
+}
