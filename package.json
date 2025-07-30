@@ -9,6 +9,7 @@
     },
     "dependencies": {
         "bootstrap": "^5.3.7",
+        "chart.js": "^4.5.0",
         "gsap": "^3.13.0"
     },
     "devDependencies": {
