@@ -1,6 +1,11 @@
 /* ===== AQUILABOARD BASE STYLES ===== */
-@use "../variables" as *;
-@use "../mixins" as *;
+// Imports 
+@use "sass:map";
+@use "sass:color";
+
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 :root {
   @include theme('light');

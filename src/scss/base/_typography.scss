@@ -1,6 +1,9 @@
 /* ===== AQUILABOARD TYPOGRAPHY ===== */
-@use "../variables" as *;
-@use "../mixins" as *;
+// Imports
+@use "sass:map";
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 /* Heading scale */
 h1, h2, h3, h4, h5, h6 {
