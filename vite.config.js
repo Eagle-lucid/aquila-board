@@ -18,7 +18,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "@/assets/scss/variables" as *;` // optional global vars
+        additionalData: `@use "@/scss/abstracts/variables" as *;` // optional global vars
       },
     },
   },
