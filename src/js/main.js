@@ -1,14 +1,13 @@
 // Main entry Logic for Aquilaboard
 
 // CORE IMPORTS 
-// Gloobal Styles 
 import '../scss/main.scss';
 
 // Utilities 
 import { setupErrorHandling } from './utils/error-handler';
 
 // Core UI Modules
-import { initializeTheme } from './modules/theme-switcher';
+import { setupThemeToggle } from './modules/theme-switcher';
 import { setupSidebar } from './modules/sidebar';
 import { setupNotifications } from './modules/notifications';
 
@@ -32,9 +31,14 @@ const AquilaApp = {
         if (this.initialized) return;
 
         try {
+
+            await this.waitForDOMReady();
             // Essentials 
             setupErrorHandling();
+
             this.setupCoreModules();
+
+            await this.waitForSCSS()
             
             // Page-specific Controllers 
              if (this.isPage('dashboard')) {
@@ -49,8 +53,36 @@ const AquilaApp = {
         }
     },
 
+     async waitForDOMReady() {
+        if (document.readyState === 'complete') return;
+        return new Promise(resolve => {
+            if (document.readyState === 'complete') {
+                resolve();
+            } else {
+                document.addEventListener('DOMContentLoaded', resolve, { once: true });
+            }
+        });
+    },
+
+    async waitForSCSS() {
+        return new Promise(resolve => {
+            if (document.styleSheets.length > 0) {
+                resolve();
+            } else {
+                const observer = new MutationObserver(() => {
+                    if (document.styleSheets.length > 0) {
+                        observer.disconnect();
+                        resolve();
+                    }
+                });
+                observer.observe(document.head, { childList: true });
+            }
+        });
+    },
+
+
     setupCoreModules() {
-        initializeTheme();
+        setupThemeToggle();
         setupSidebar();
         setupNotifications();
     },
